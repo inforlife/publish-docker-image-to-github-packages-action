@@ -16,13 +16,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Publish to GitHub Packages
-      uses: inforlife/publish-docker-image-to-github-packages-action@v1
+      uses: inforlife/publish-docker-image-to-github-packages-action@v2
       with:
         password: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Docker image
-This action creates the package `docker.pkg.github.com/inforlife/<REPO_NAME>/<RELEASE_TAG>`.
-
-For a release with the `YYYY.X` tag,   `RELEASE_TAG` is `YYYY.X:production`.
-For a release with the `YYYY.X.Z` tag, `RELEASE_TAG` is `YYYY.X:Z`.
+This action creates the package `docker.pkg.github.com/inforlife/registry/<REPO>:<RELEASE_TAG>`.
