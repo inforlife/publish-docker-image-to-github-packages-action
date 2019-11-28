@@ -20,3 +20,9 @@ jobs:
       with:
         password: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+## Docker image
+This action creates the package `docker.pkg.github.com/inforlife/<REPO_NAME>/<RELEASE_TAG>`.
+
+For a release with the `YYYY.X` tag,   `RELEASE_TAG` is `YYYY.X:production`.
+For a release with the `YYYY.X.Z` tag, `RELEASE_TAG` is `YYYY.X:Z`.
