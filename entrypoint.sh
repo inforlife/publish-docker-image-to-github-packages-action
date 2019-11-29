@@ -6,16 +6,11 @@ if [ -z "${INPUT_PASSWORD}" ]; then
   exit 1
 fi
 
-TAGPARTS=($(echo $(echo ${GITHUB_REF:10}) | tr "." "\n"))
+DOCKERTAG=${GITHUB_REF:10}
+REPO=$(echo ${GITHUB_REPOSITORY} | cut -d'/' -f2-)
 
-if [ -z "${TAGPARTS[2]}" ]; then
- TAGPARTS[2]="production"
-fi
-
-DOCKERTAG="${TAGPARTS[0]}.${TAGPARTS[1]}:${TAGPARTS[2]}"
-
-echo ${INPUT_PASSWORD} | docker login docker.pkg.github.com -u $(echo ${GITHUB_REPOSITORY} | cut -d'/' -f01) --password-stdin
+echo ${INPUT_PASSWORD} | docker login docker.pkg.github.com -u inforlife --password-stdin
 docker build -t ${DOCKERTAG} .
-docker tag ${DOCKERTAG} docker.pkg.github.com/${GITHUB_REPOSITORY}/${DOCKERTAG}
-docker push docker.pkg.github.com/${GITHUB_REPOSITORY}/${DOCKERTAG}
+docker tag ${DOCKERTAG} docker.pkg.github.com/inforlife/registry/${REPO}:${DOCKERTAG}
+docker push docker.pkg.github.com/inforlife/registry/${REPO}:${DOCKERTAG}
 docker logout
