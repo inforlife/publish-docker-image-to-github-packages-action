@@ -16,10 +16,17 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Publish to GitHub Packages
-      uses: inforlife/publish-docker-image-to-github-packages-action@v2
+      uses: inforlife/publish-docker-image-to-github-packages-action@v3
       with:
         password: ${{ secrets.GITHUB_TOKEN }}
+        slack_token: ${{ secrets.SLACK_TOKEN }}
 ```
+
+## Secrets
+**The `SLACK_TOKEN` must be added to the Repo's secrets via GitHub UI.**
 
 ## Docker image
 This action creates the package `docker.pkg.github.com/inforlife/registry/<REPO>:<RELEASE_TAG>`.
+
+## Slack Notification
+This action posts the message `The image <REPO>:<RELEASE_TAG> has been published to InfoRLife's registry.` to the `github-packages` Slack channel.
