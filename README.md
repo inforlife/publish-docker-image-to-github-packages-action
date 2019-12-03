@@ -18,12 +18,13 @@ jobs:
     - name: Publish to GitHub Packages
       uses: inforlife/publish-docker-image-to-github-packages-action@v3
       with:
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ secrets.INFORLIFE_ACCESS_TOKEN }}
         slack_token: ${{ secrets.SLACK_TOKEN }}
 ```
 
 ## Secrets
-**The `SLACK_TOKEN` must be added to the Repo's secrets via GitHub UI.**
+- **The `INFORLIFE_ACCESS_TOKEN` must be created and added to the Repo's secrets via GitHub UI.** The token should be unique for the repo and have `read:packages, repo, write:packages` permissions.
+- **The `SLACK_TOKEN` must be added to the Repo's secrets via GitHub UI.**
 
 ## Docker image
 This action creates the package `docker.pkg.github.com/inforlife/registry/<REPO>:<RELEASE_TAG>`.
