@@ -2,7 +2,7 @@
 set -e
 
 if [ -z "${INPUT_PASSWORD}" ]; then
-  echo "Password not found. Add password: \${{ secrets.GITHUB_TOKEN }} to the workflow file."
+  echo "Password not found. Add password: \${{ secrets.INFORLIFE_ACCESS_TOKEN }} to the workflow file."
   exit 1
 fi
 
