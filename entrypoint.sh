@@ -15,8 +15,8 @@ fi
 RELEASE_TAG=${GITHUB_REF:10}
 REPO=$(echo ${GITHUB_REPOSITORY} | cut -d'/' -f2-)
 
-docker build --build-arg RELEASE_TAG=${RELEASE_TAG} -t image .
 echo ${INPUT_PASSWORD} | docker login docker.pkg.github.com -u inforlife --password-stdin
+docker build --build-arg RELEASE_TAG=${RELEASE_TAG} -t image .
 docker tag image docker.pkg.github.com/inforlife/registry/${REPO}:${RELEASE_TAG}
 docker push docker.pkg.github.com/inforlife/registry/${REPO}:${RELEASE_TAG}
 docker logout
