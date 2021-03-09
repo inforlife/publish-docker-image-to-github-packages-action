@@ -1,5 +1,7 @@
 # Publish Docker Image To GitHub Packages
 
+## [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/) - This action is no longer mainatined, use https://github.com/inforlife/publish-docker-image-to-github-container-registry-action instead.
+
 A GitHub Action which creates, from the latest release (git tag), a Docker Image and pushes it to GitHub Packages.
 
 ## Usage
